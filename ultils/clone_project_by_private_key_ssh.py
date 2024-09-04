@@ -18,9 +18,9 @@ name_key = args.private_key_path.split("/")[-1]
 
 def init_project(scope=globals(), cfg={}, **kwargs):
     import os
-    if not os.path.exists(f'{root_dir}/resyslab_utils'):
-        print("\033[1;31m---------------you could have cloned resyslab_utils first!---------------\033[0m")
-        return
+    #if not os.path.exists(f'{root_dir}/resyslab_utils'):
+     #   print("\033[1;31m---------------you could have cloned resyslab_utils first!---------------\033[0m")
+      #  return
     # init prj_rsa
     rsa_dir = os.path.expanduser('~/.ssh/')
     os.makedirs(rsa_dir, exist_ok=True)
