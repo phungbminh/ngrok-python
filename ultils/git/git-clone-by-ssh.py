@@ -10,7 +10,7 @@ root_dir = os.path.abspath(f"{current_dir}/../../../")
 parser = ArgumentParser()
 parser.add_argument('--giturl',default="",type=str,help="giturl to clone")
 parser.add_argument('--folder',default="",type=str,help="folder clone to")
-parser.add_argument('--branch',default="DEV",type=str,help="branch to clone")
+parser.add_argument('--branch',default="main",type=str,help="branch to clone")
 parser.add_argument('--private-key-path',default="",type=str,help="private ssh key for authority")
 
 args = parser.parse_args()
@@ -43,7 +43,9 @@ def init_project(scope=globals(), cfg={}, **kwargs):
         subprocess.run(["git", "clone", args.giturl, args.folder], check=True)
     else:
         subprocess.run(["git", "pull"], cwd=args.folder, check=True)
-    subprocess.run(["git", "checkout", args.branch], cwd=args.folder, check=True)
+    
+    if args.branch != 'main':
+        subprocess.run(["git", "checkout", args.branch], cwd=args.folder, check=True)
 
     if scope is not None:
         scope.update(locals())
