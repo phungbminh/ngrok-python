@@ -10,8 +10,8 @@ def start_ssh(id_rsa_pub="", password="", install_ssh=False, config_ssh=False):
     print(f'{"*" * 10} SETUP SSH SERVICE {"*" * 10}')
 
     if install_ssh is True:
-
         get_ipython().system('sudo apt-get update -y')
+        get_ipython().system('conda install openssh -y')
         get_ipython().system('echo "> Install ssh service..."')
         get_ipython().system('apt-get install ssh -y 2>&1 > /dev/null')
         get_ipython().system('sudo dpkg --configure -a')
